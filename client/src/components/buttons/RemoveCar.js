@@ -12,9 +12,6 @@ const RemoveCar = ({ id }) => {
 
   const [deleteCarMutation] = useMutation(REMOVE_CAR, {
     refetchQueries: [{ query: GET_PEOPLE }],
-    onError: (error) => {
-      console.error("Error deleting car:", error);
-    },
   });
 
 

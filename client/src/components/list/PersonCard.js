@@ -4,7 +4,7 @@ import CarList from "./CarList";
 import RemovePerson from "../buttons/RemovePerson";
 import UpdatePerson from "../forms/UpdatePerson";
 import { EditOutlined } from "@ant-design/icons";
-import React from "react";
+import { Link } from "react-router-dom";
 
 const PersonCard = (props) => {
   const [editMode, setEditMode] = useState(false);
@@ -45,7 +45,7 @@ const PersonCard = (props) => {
                 />
               </div>
             ))}
-          <a>Learn More</a>
+          <Link to={`/people/${id}`}>Learn More</Link>
         </Card>
         </div>
       ) : (
@@ -69,7 +69,7 @@ const PersonCard = (props) => {
                 />
               </div>
             ))}
-          <a>Learn More</a>
+          <Link to={`/people/${id}`}>Learn More</Link>
         </Card>
       )}
     </div>

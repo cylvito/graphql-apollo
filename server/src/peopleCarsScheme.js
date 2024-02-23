@@ -112,7 +112,8 @@ const typeDefs = `
 
   type Query {
     people: [Person]
-    cars: [Car] 
+    cars: [Car]
+    personWithCars(id: String!): Person
   }
 
   type Mutation {
@@ -129,6 +130,10 @@ const resolvers = {
   Query: {
     people: () => peopleArray,
     cars: () => carsArray,
+    personWithCars: (_, { id }) => {
+      const person = peopleArray.find(person => person.id === id);
+      return person;
+    },
   },
 
   Person: {

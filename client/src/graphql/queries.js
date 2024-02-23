@@ -98,6 +98,23 @@ export const UPDATE_CAR = gql`
   }
 `;
 
+export const PERSON_WITH_CARS = gql`
+  query PersonWithCars($id: String!) {
+    personWithCars(id: $id) {
+      id
+      firstName
+      lastName
+      cars {
+        id
+        year
+        make
+        model
+        price
+      }
+    }
+  }
+`;
+
 export const REMOVE_PERSON = gql`
   mutation RemovePerson($id: String!) {
     deletePerson(id: $id) {
