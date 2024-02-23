@@ -79,6 +79,7 @@ const PersonCard = (props) => {
 const getStyles = () => ({
   card: {
     width: "500px",
+    border: '1.5px solid grey'
   },
 });
 

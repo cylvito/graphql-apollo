@@ -8,10 +8,8 @@ import { useQuery } from "@apollo/client";
 const Home = () => {
 
     const { loading, error, data } = useQuery(GET_PEOPLE);
-
     if (loading) return "Loading...";
-    if (error) return `Error! ${error.message}`;
-    console.log(data)
+    if (error) return `Error! ${error.message}`
   return (
     <div>
       <Title />

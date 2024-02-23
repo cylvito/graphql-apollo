@@ -165,11 +165,14 @@ const resolvers = {
     deletePerson: (root, args) => {
       const deletedPerson = find(peopleArray, { id: args.id });
       if (!deletedPerson) {
-        throw new Error(`Couldn\'t find person with id ${args.id}`);
+        throw new Error(`Couldn't find person with id ${args.id}`);
       }
 
       remove(peopleArray, (p) => {
         return p.id === deletedPerson.id;
+      });
+      remove(carsArray, (car) => {
+        return car.personId === deletedPerson.id;
       });
 
       return deletedPerson;

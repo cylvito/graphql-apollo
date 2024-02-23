@@ -15,23 +15,35 @@ const People = () => {
   if (error) return `Error! ${error.message}`;
 
   return (
-    <List grid={{ gutter: 20, column: 1 }} style={styles.list}>
-      {data.people && data.people.length > 0 ? (
-        data.people.map(({ id, firstName, lastName, cars }) => (
-          <List.Item key={id}>
-            <PersonCard
-              key={id}
-              id={id}
-              firstName={firstName}
-              lastName={lastName}
-              cars={cars}
-            />
-          </List.Item>
-        ))
-      ) : (
-        <div>There are no people to display.</div>
-      )}
-    </List>
+    <div>
+      <h2
+        style={{
+          textAlign: "center",
+          paddingTop: "20px",
+          borderBottom: "1px solid gainsboro",
+          margin: "0 20px",
+        }}
+      >
+        Records
+      </h2>
+      <List style={styles.list}>
+        {data.people && data.people.length > 0 ? (
+          data.people.map(({ id, firstName, lastName, cars }) => (
+            <List.Item style={{ width: "100%" }} key={id}>
+              <PersonCard
+                key={id}
+                id={id}
+                firstName={firstName}
+                lastName={lastName}
+                cars={cars}
+              />
+            </List.Item>
+          ))
+        ) : (
+          <div>There are no people to display.</div>
+        )}
+      </List>
+    </div>
   );
 };
 
@@ -39,6 +51,7 @@ const getStyles = () => ({
   list: {
     display: "flex",
     justifyContent: "center",
+    padding: '40px'
   },
 });
 

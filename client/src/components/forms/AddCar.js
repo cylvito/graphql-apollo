@@ -72,7 +72,9 @@ const AddCar = () => {
 
   return (
     <div>
+      <h2 style= {{ textAlign: 'center', paddingTop: '20px', borderBottom: '1px solid gainsboro', margin: '0 20px'}}>Add Car</h2>
     <Form
+    style= {{ padding: '28px', justifyContent: 'center', gap: '12px'}}
       name="add-car-form"
       layout="inline"
       size="large"

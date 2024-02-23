@@ -30,32 +30,45 @@ const UpdatePerson = (props) => {
   }, []);
 
   return (
-    <Form
-      name="update-person-form"
-      layout="inline"
-      form={form}
-      onFinish={onFinish}
-      initialValues={{
-        firstName,
-        lastName,
-      }}
-    >
-      <Form.Item
-        name="firstName"
-        rules={[{ required: true, message: "Please enter a first name" }]}
+    <div>
+      <h2
+        style={{
+          textAlign: "center",
+          paddingTop: "20px",
+          borderBottom: "1px solid gainsboro",
+          margin: "0 20px",
+        }}
       >
-        <Input placeholder="i.e. John" />
-      </Form.Item>
-      <Form.Item
-        name="lastName"
-        rules={[{ required: true, message: "Please enter a last name" }]}
+        Update Person
+      </h2>
+      <Form
+        style={{ padding: "28px", justifyContent: "center", gap: "12px" }}
+        name="update-person-form"
+        layout="inline"
+        form={form}
+        onFinish={onFinish}
+        initialValues={{
+          firstName,
+          lastName,
+        }}
       >
-        <Input placeholder="i.e. Smith" />
-      </Form.Item>
-      <Button htmlType="submit">Update</Button>
+        <Form.Item
+          name="firstName"
+          rules={[{ required: true, message: "Please enter a first name" }]}
+        >
+          <Input placeholder="i.e. John" />
+        </Form.Item>
+        <Form.Item
+          name="lastName"
+          rules={[{ required: true, message: "Please enter a last name" }]}
+        >
+          <Input placeholder="i.e. Smith" />
+        </Form.Item>
+        <Button htmlType="submit">Update</Button>
 
-      <Button onClick={props.onButtonClick}>Cancel</Button>
-    </Form>
+        <Button onClick={props.onButtonClick}>Cancel</Button>
+      </Form>
+    </div>
   );
 };
 

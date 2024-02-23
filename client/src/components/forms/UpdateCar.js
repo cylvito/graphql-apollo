@@ -27,7 +27,7 @@ const UpdateCar = (props) => {
 
   const onFinish = async (values) => {
     const { make, model, price, year } = values;
-  
+
     try {
       await updateCar({
         variables: {
@@ -39,81 +39,94 @@ const UpdateCar = (props) => {
           personId,
         },
       });
-  
+
       props.onButtonClick();
     } catch (error) {
-      console.error('Error updating car:', error);
+      console.error("Error updating car:", error);
     }
   };
 
   return (
-    <Form
-      name="update-car-form"
-      layout="inline"
-      form={form}
-      onFinish={onFinish}
-      initialValues={{
-        make,
-        model,
-        price,
-        year,
-        personId,
-      }}
-    >
-      <Form.Item
-        label="Make"
-        name="make"
-        rules={[{ required: true, message: "Please enter the make" }]}
+    <div>
+      <h2
+        style={{
+          textAlign: "center",
+          paddingTop: "20px",
+          borderBottom: "1px solid gainsboro",
+          margin: "0 20px",
+        }}
       >
-        <Input placeholder="Make" />
-      </Form.Item>
-      <Form.Item
-        label="Model"
-        name="model"
-        rules={[{ required: true, message: "Please enter the model" }]}
+        Update Car
+      </h2>
+      <Form
+        style={{ padding: "28px", justifyContent: "center", gap: "12px" }}
+        name="update-car-form"
+        layout="inline"
+        form={form}
+        onFinish={onFinish}
+        initialValues={{
+          make,
+          model,
+          price,
+          year,
+          personId,
+        }}
       >
-        <Input placeholder="Model" />
-      </Form.Item>
-      <Form.Item
-        label="Price"
-        name="price"
-        rules={[{ required: true, message: "Please enter the price" }]}
-      >
-        <Input placeholder="Price" />
-      </Form.Item>
-      <Form.Item
-        label="Year"
-        name="year"
-        rules={[{ required: true, message: "Please enter a year" }]}
-      >
-        <Input placeholder="Year" />
-      </Form.Item>
-      <Form.Item
-        name="person"
-        label="Person"
-        rules={[
-          {
-            required: true,
-          },
-        ]}
-      >
-        <Select
-          placeholder="Select a person"
-          onChange={onPersonChange}
-          value={personId}
-          allowClear
+        <Form.Item
+          label="Make"
+          name="make"
+          rules={[{ required: true, message: "Please enter the make" }]}
         >
-          {data &&
-            data.people.map((person, id) => (
-              <Option key={id} value={person.id}>
-                {person.firstName} {person.lastName}
-              </Option>
-            ))}
-        </Select>
-      </Form.Item>
-      <Button htmlType="submit">Update</Button>
-      <Button onClick={props.onButtonClick}>Cancel</Button>
-    </Form>
+          <Input placeholder="Make" />
+        </Form.Item>
+        <Form.Item
+          label="Model"
+          name="model"
+          rules={[{ required: true, message: "Please enter the model" }]}
+        >
+          <Input placeholder="Model" />
+        </Form.Item>
+        <Form.Item
+          label="Price"
+          name="price"
+          rules={[{ required: true, message: "Please enter the price" }]}
+        >
+          <Input placeholder="Price" />
+        </Form.Item>
+        <Form.Item
+          label="Year"
+          name="year"
+          rules={[{ required: true, message: "Please enter a year" }]}
+        >
+          <Input placeholder="Year" />
+        </Form.Item>
+        <Form.Item
+          name="person"
+          label="Person"
+          rules={[
+            {
+              required: true,
+            },
+          ]}
+        >
+          <Select
+            placeholder="Select a person"
+            onChange={onPersonChange}
+            value={personId}
+            allowClear
+          >
+            {data &&
+              data.people.map((person, id) => (
+                <Option key={id} value={person.id}>
+                  {person.firstName} {person.lastName}
+                </Option>
+              ))}
+          </Select>
+        </Form.Item>
+        <Button htmlType="submit">Update</Button>
+        <Button onClick={props.onButtonClick}>Cancel</Button>
+      </Form>
+    </div>
   );
 };
 

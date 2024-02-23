@@ -11,9 +11,11 @@ const Title = () => {
 
 const getStyles = () => ({
     title: {
-        fontSize: 20,
-        padding: '15px',
-        marginBottom: '50px'
+        marginTop: '40px',
+        margin: '40px 20px 0 20px',
+        paddingBottom: '50px',
+        textAlign: 'center',
+        borderBottom: '1px solid gainsboro'
     }
 })
 

@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { PERSON_WITH_CARS } from "../../graphql/queries";
 import { List } from "antd";
 import { Link } from "react-router-dom";
+import { readMultipartBody } from "@apollo/client/link/http/parseAndCheckHttpResponse";
 
 const DetailList = () => {
   const { id } = useParams();
@@ -24,6 +25,11 @@ const DetailList = () => {
   }
 
   const { firstName, lastName, cars } = data.personWithCars;
+
+  const formattedPrice = (price) => {
+    return "$ " + price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");;
+  };
+  
 
   return (
     <div>
@@ -58,7 +64,9 @@ const DetailList = () => {
           dataSource={cars}
           renderItem={(car) => (
             <List.Item>
-              {car.year} {car.make} {car.model} {car.price}
+              <div>
+                ({car.year}) {car.make} {car.model} -> {formattedPrice(car.price)}
+              </div>
             </List.Item>
           )}
         />
