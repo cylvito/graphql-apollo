@@ -71,6 +71,7 @@ const AddCar = () => {
   };
 
   return (
+    <div>
     <Form
       name="add-car-form"
       layout="inline"
@@ -144,6 +145,7 @@ const AddCar = () => {
         )}
       </Form.Item>
     </Form>
+    </div>
   );
 };
 

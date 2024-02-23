@@ -16,12 +16,21 @@ const People = () => {
 
   return (
     <List grid={{ gutter: 20, column: 1 }} style={styles.list}>
-      {data.people &&
+      {data.people && data.people.length > 0 ? (
         data.people.map(({ id, firstName, lastName, cars }) => (
           <List.Item key={id}>
-            <PersonCard key={id} id={id} firstName={firstName} lastName={lastName} cars={cars}/>
+            <PersonCard
+              key={id}
+              id={id}
+              firstName={firstName}
+              lastName={lastName}
+              cars={cars}
+            />
           </List.Item>
-        ))}
+        ))
+      ) : (
+        <div>There are no people to display.</div>
+      )}
     </List>
   );
 };
